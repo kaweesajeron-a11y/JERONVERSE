@@ -3,308 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeronverse | My Creative Hub</title>
-    <style>
-        /* Modern Reset and CSS Variables */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg-color: #0b0c10;
-            --card-bg: #1f2833;
-            --text-main: #c5c6c7;
-            --accent-neon: #45f3ff;
-            --accent-purple: #bd00ff;
-            --accent-pink: #ff4757;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        /* Hero Header Section */
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #1f2833 0%, #0b0c10 100%);
-            border-bottom: 2px solid var(--accent-neon);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-neon);
-            box-shadow: 0 0 20px var(--accent-neon);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        header h1 {
-            font-size: 3rem;
-            color: #fff;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(69, 243, 255, 0.5);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: var(--accent-neon);
-            font-weight: 300;
-        }
-
-        /* Main Container Layout */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #fff;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--accent-purple);
-            padding-left: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Standard Cards Grid Layout (Movies & Music) */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(69, 243, 255, 0.2);
-            border-color: var(--accent-neon);
-        }
-
-        .card h3 {
-            color: #fff;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #a9b7c6;
-            margin-bottom: 15px;
-        }
-
-        /* Embedded Media Styles */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .spotify-container {
-            margin-top: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(69, 243, 255, 0.1);
-            color: var(--accent-neon);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .tag.music-tag {
-            background: rgba(189, 0, 255, 0.1);
-            color: var(--accent-purple);
-        }
-
-        /* Interactive Anime Flip Cards Layout */
-        .anime-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 100%;
-            height: 380px;
-            perspective: 1000px; /* Crucial for 3D effect */
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            border-radius: 12px;
-        }
-
-        /* Triggers the 3D flip animation on hover */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .flip-card-front {
-            background: linear-gradient(45deg, #1f2833, #0b0c10);
-            color: white;
-            border: 2px solid var(--accent-pink);
-        }
-
-        .flip-card-front h3 {
-            font-size: 1.8rem;
-            color: var(--accent-pink);
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
-            margin-bottom: 10px;
-        }
-
-        .flip-card-front p {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        .flip-card-back {
-            background-color: #1f2833;
-            color: var(--text-main);
-            transform: rotateY(180deg);
-            border: 2px solid var(--accent-neon);
-            text-align: left;
-            justify-content: space-between;
-        }
-
-        .flip-card-back h4 {
-            color: #fff;
-            font-size: 1.3rem;
-            border-bottom: 1px solid #45f3ff;
-            padding-bottom: 5px;
-            width: 100%;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #1f2833;
-            margin-top: 60px;
-        }
-    </style>
+    <title>Jeronverse</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Top Navigation Bar -->
     <header>
-        <img src="profile.jpg" alt="Jeron" class="profile-img">
-        <h1>JERONVERSE</h1>
-        <p>Welcome to my digital domain. Explore trending cinema, epic anime, & global beats.</p>
-    </header>
-
-    <div class="container">
-
-        <!-- Movies Section with Embedded YouTube Trailers -->
-        <h2 class="section-title">Trending Movies</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Gladiator II</h3>
-                <p>Epic historical action drama returning to the brutal arena atmosphere with spectacular visuals and intense battles.</p>
-                <span class="tag">Trending #1</span>
-                <!-- Embedded YouTube Video Container -->
-                <div class="video-container">
-                    <iframe src="https://youtube.com" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+        <div class="header-container">
+            <div class="logo">Jeronverse</div>
+            
+            <!-- Music Search Bar Concept -->
+            <div class="search-box">
+                <input type="text" id="musicSearch" placeholder="Search music to listen & download...">
+                <button onclick="searchMusic()"><i class="fas fa-search"></i></button>
             </div>
-            <div class="card">
-                <h3>Wicked</h3>
-                <p>A spectacular cinematic adaptation of the famous musical, bringing incredible vocals, magic, and vibrant fantasy design.</p>
-                <span class="tag">Highly Rated</span>
-                <div class="video-container">
-                    <iframe src="https://youtube.com" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+
+            <!-- Live Dashboard Status Tracker -->
+            <div class="status-tracker">
+                <span id="userLocation"><i class="fas fa-map-marker-alt"></i> Detecting Location...</span>
+                <span id="localWeather"><i class="fas fa-cloud-sun"></i> Loading Weather...</span>
+            </div>
+
+            <!-- Premium Auth System Button Trigger -->
+            <div class="auth-buttons">
+                <button class="btn btn-primary" onclick="toggleAuthModal()">Log In / Sign Up</button>
             </div>
         </div>
+    </header>
 
-        <!-- Interactive Anime Section (Flip Cards) -->
-        <h2 class="section-title" style="border-left-color: var(--accent-pink);">Interactive Anime Zone</h2>
-        <p style="margin-bottom: 20px; color: #888;">Hover over an anime card to flip it and see my rating!</p>
-        <div class="anime-grid">
-            <!-- Anime Card 1 -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h3>Chainsaw Man</h3>
-                        <p>Hover to reveal profile</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h4>Chainsaw Man</h4>
-                        <p><strong>Genre:</strong> Dark Fantasy, Action</p>
-                        <p>Denji transforms his body parts into chainsaws to fight devils in an incredibly animated, dark urban world.</p>
-                        <div>
-                            <span class="tag" style="color: var(--accent-pink); background: rgba(255,71,87,0.1);">Score: 9.5/10</span>
-                        </div>
+    <main class="main-layout">
+        
+        <!-- Left Sidebar: Creator Profile Card -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <img src="https://github.com" alt="Jeron" class="profile-avatar">
+                <h2>Jeron</h2>
+                <p class="status-tag"><i class="fas fa-graduation-cap"></i> Student</p>
+                <p class="location-tag"><i class="fas fa-home"></i> Mpigi, Uganda</p>
+                <p class="bio">Welcome to Jeronverse. Explore animations, stream premium audio tracks, and connect with creators.</p>
+            </div>
+
+            <!-- Global Matrix Hub Links (Connecting to external hubs) -->
+            <div class="hub-card">
+                <h3><i class="fas fa-network-wired"></i> Global Hubs</h3>
+                <ul class="hub-links">
+                    <li><a href="https://spotify.com" target="_blank"><i class="fab fa-spotify"></i> Music Stream</a></li>
+                    <li><a href="https://netflix.com" target="_blank"><i class="fas fa-film"></i> Movies & Cinema</a></li>
+                    <li><a href="https://bbc.com" target="_blank"><i class="fas fa-newspaper"></i> World News</a></li>
+                    <li><a href="https://gmail.com" target="_blank"><i class="fas fa-envelope"></i> Secure Email Portal</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Center Feed: Social Engine, Animations & Media Hub -->
+        <section class="feed-container">
+            
+            <!-- Community Post Creator Engine -->
+            <div class="create-post-card">
+                <h3>Share an Update</h3>
+                <textarea placeholder="What's happening in the Jeronverse today?"></textarea>
+                <div class="post-actions">
+                    <button class="btn-secondary"><i class="fas fa-image"></i> Add Photo</button>
+                    <button class="btn btn-primary">Post to Feed</button>
+                </div>
+            </div>
+
+            <!-- Featured Animation & Social Commentary Card -->
+            <div class="media-card">
+                <div class="media-header">
+                    <h3><i class="fas fa-film"></i> Featured Animation: Cyber Ascent</h3>
+                    <span class="badge">New Release</span>
+                </div>
+                <!-- Premium High-Fidelity Video Component -->
+                <div class="video-wrapper">
+                    <iframe src="https://youtube.com" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <!-- Interactive Engagement Buttons -->
+                <div class="engagement-bar">
+                    <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i> <span class="count">24</span> Likes</button>
+                    <button class="comment-trigger"><i class="far fa-comment"></i> 12 Comments</button>
+                </div>
+                <!-- Live Micro-Comment Feed Area -->
+                <div class="comment-section">
+                    <div class="comment"><span class="user">AnimeFan:</span> This transition effect looks insanely crisp!</div>
+                    <div class="comment-input-box">
+                        <input type="text" placeholder="Write a comment about this animation...">
+                        <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
-            <!-- Anime Card 2 -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h3>Kaiju No. 8</h3>
-                        <p>Hover to reveal profile</p>
-                    </div>
-                    <div class="flip-card-back">
+
+            <!-- Clickable Premium Photo & Engagement Feed Card -->
+            <div class="media-card">
+                <div class="media-header">
+                    <h3><i class="fas fa-camera"></i> Curated Visual Concept Art</h3>
+                </div>
+                <div class="photo-wrapper">
+                    <a href="https://unsplash.com" target="_blank">
+                        <img src="https://unsplash.com" alt="Concept Art" class="feed-photo">
+                    </a>
+                </div>
+                <div class="engagement-bar">
+                    <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i> <span class="count">48</span> Likes</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Sidebar: Live Public Chat System Hub -->
+        <aside class="sidebar">
+            <div class="chat-hub">
+                <h3><i class="fas fa-comments"></i> Jeronverse Global Chat</h3>
+                <div class="chat-messages" id="chatBox">
+                    <div class="msg received"><span class="sender">Alex:</span> Yo! Is this live chat running?</div>
+                    <div class="msg sent"><span class="sender">You:</span> Welcome to Jeronverse! Yeah, it works.</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Type a message...">
+                    <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- JavaScript Engine Injection (Runs API Lookups & Local Functions) -->
+    <script>
+        // Automatic Location & Weather Engine Logic
+        async function fetchSystemData() {
+            try {
+                // Step 1: Detect visitor IP position parameters
+                const geoRes = await fetch('https://ipapi.co');
+                const geoData = await geoRes.json();
+                document.getElementById('userLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${geoData.city}, ${geoData.country_code}`;
+                
+                // Step 2: Query atmospheric variables matching position
+                const weatherRes = await fetch(`https://open-meteo.com{geoData.latitude}&longitude=${geoData.longitude}&current_weather=true`);
+                const weatherData = await weatherRes.json();
+                document.getElementById('localWeather').innerHTML = `<i class="fas fa-thermometer-half"></i> ${weatherData.current_weather.temperature}°C`;
+            } catch (error) {
+                document.getElementById('userLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> Mpigi, UG`;
+                document.getElementById('localWeather').innerHTML = `<i class="fas fa-sun"></i> 24°C`;
+            }
+        }
+        window.onload = fetchSystemData;
+
+        // Simple interface feedback actions
+        function toggleLike(btn) {
+            const icon = btn.querySelector('i');
+            const countSpan = btn.querySelector('.count');
+            let currentCount = parseInt(countSpan.innerText);
+            
+            if(icon.classList.contains('far')) {
+                icon.className = 'fas fa-thumbs-up target-liked';
+                countSpan.innerText = currentCount + 1;
+            } else {
+                icon.className = 'far fa-thumbs-up';
+                countSpan.innerText = currentCount - 1;
+            }
+        }
+    </script>
+</body>
+</html>
+Use code with caution.
+
+2. Updated style.css (The Visual Styling)
+
+Replace your entire style.css file on GitHub with this dark cyberpunk configuration:
+css
+:root {
+    --bg-dark: #090d16;
+    --card-dark: #131a2a;
+    --border-dark: #222f47;
+    --neon-blue: #00f2fe;
+    --neon-purple: #9b51e0;
+    --text-main: #f1f5f9;
+    --text-muted: #64748b;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--card-dark);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--border-dark);
+    position: sticky; top: 0; z-index: 100;
+}
+
+.header-container {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+}
+
+.logo {
+    font-size: 1.8rem; font-weight: 800;
+    background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.search-box {
+    display: flex; background: var(--bg-dark);
+    border: 1px solid var(--border-dark); border-radius: 30px; overflow: hidden; width: 350px;
+}
+
+.search-box input {
+    background: none; border: none; padding: 0.6rem 1.2rem; color: #fff; width: 100%; outline: none;
+}
+
+.search-box button {
+    background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+    border: none; color: #000; padding: 0 1.2rem; cursor: pointer;
+}
+
+.status-tracker {
+    display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--neon-blue);
+}
+
+.main-layout {
+    max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 1rem;
+    display: grid; grid-template-columns: 320px 1fr 350px; gap: 2rem; flex: 1;
+}
+
+.sidebar {
+    display: flex; flex-direction: column; gap: 1.5rem;
+}
+
+.profile-card, .hub-card, .media-card, .create-post-card, .chat-hub {
+    background-color: var(--card-dark); border: 1px solid var(--border-dark);
+    border-radius: 16px; padding: 1.5rem;
+}
+
+.profile-avatar {
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 3px solid var(--neon-blue); display: block; margin: 0 auto 1rem auto;
+}
+
+.profile-card h2 { text-align: center; margin-bottom: 0.5rem; }
+.status-tag, .location-tag { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
+.profile-card .bio { color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 1rem; line-height: 1.4; }
+
+.hub-links { list-style: none; margin-top: 1rem; }
+.hub-links li { margin-bottom: 0.8rem; }
+.hub-links a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.8rem; transition: 0.2s; }
+.hub-links a:hover { color: var(--neon-blue); transform: translateX(5px); }
+
+.feed-container { display: flex; flex-direction: column; gap: 2rem; }
+
+.create-post-card textarea {
+    width: 100%; height: 80px; background: var(--bg-dark); border: 1px solid var(--border-dark);
+    border-radius: 8px; color: #fff; padding: 0.8rem; resize: none; margin: 1rem 0; outline: none;
+}
+.post-actions { display: flex; justify-content: space-between; }
+
+.btn { border: none; padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 600; cursor: pointer; }
+.btn-primary { background: linear-gradient(to right, var(--neon-blue), var(--neon-purple)); color: #000; }
+.btn-secondary { background: transparent; border: 1px solid var(--border-dark); color: #fff; cursor: pointer; padding: 0.5rem 1rem; border-radius: 20px; }
+
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin: 1rem 0; border-radius: 12px; overflow: hidden; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.photo-wrapper img { width: 100%; border-radius: 12px; margin-top: 1rem; display: block; object-fit: cover; max-height: 400px; }
+
+.engagement-bar { display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-dark); }
+.engagement-bar button { background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+.engagement-bar button:hover, .target-liked { color: var(--neon-blue) !important; }
+
+.comment-section { background: var(--bg-dark); border-radius: 8px; padding: 1rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.comment { font-size: 0.85rem; line-height: 1.4; }
+.comment .user { color: var(--neon-purple); font-weight: 600; margin-right: 0.5rem; }
+.comment-input-box { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.comment-input-box input { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 4px; padding: 0.4rem 0.8rem; color: #fff; flex: 1; outline: none; }
+.btn-send { background: none; border: none; color: var(--neon-blue); cursor: pointer; }
+
+.chat-hub { display: flex; flex-direction: column; height: 450px; }
+.chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; padding: 1rem 0; }
+.msg { max-width: 80%; padding: 0.6rem 1rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.4; }
+.msg.received { background: var(--border-dark); align-self: flex-start; }
+.msg.sent { background: var(--neon-purple); color: #fff; align-self: flex-end; }
+.msg .sender { display: block; font-size: 0.7rem; color: var(--neon-blue); margin-bottom: 0.2rem; font-weight: bold; }
+.chat-input { display: flex; gap: 0.5rem; background: var(--bg-dark); border: 1px solid var(--border-dark); border-radius: 8px; padding: 0.4rem; }
+.chat-input input { background: none; border: none; color: #fff; flex: 1; outline: none; padding: 0.4rem; }
+.chat-input button { background: none; border: none; color: var(--neon-blue); cursor: pointer; padding: 0 0.5rem; }
+
+@media (max-width: 1100px) {
+    .main-layout { grid-template-columns: 1fr; }
+}
