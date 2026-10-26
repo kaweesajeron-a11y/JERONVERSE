@@ -3,49 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Hub</title>
+    <title>Jeronverse | My Creative Hub</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #121212; color: #ffffff; }
-        header { text-align: center; padding: 20px; background-color: #1f1f1f; }
-        section { margin: 20px 0; padding: 20px; background-color: #1f1f1f; border-radius: 8px; }
-        h1, h2 { color: #ff4757; }
-        ul { list-style-type: square; }
+        /* Modern Reset and CSS Variables */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --text-main: #c5c6c7;
+            --accent-neon: #45f3ff;
+            --accent-purple: #bd00ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Hero Header Section */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1f2833 0%, #0b0c10 100%);
+            border-bottom: 2px solid var(--accent-neon);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-neon);
+            box-shadow: 0 0 20px var(--accent-neon);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(69, 243, 255, 0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--accent-neon);
+            font-weight: 300;
+        }
+
+        /* Main Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-purple);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Cards Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(69, 243, 255, 0.2);
+            border-color: var(--accent-neon);
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #a9b7c6;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(69, 243, 255, 0.1);
+            color: var(--accent-neon);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .tag.music-tag {
+            background: rgba(189, 0, 255, 0.1);
+            color: var(--accent-purple);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #1f2833;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header Section with Profile Pic -->
     <header>
-        <h1>Welcome to My World!</h1>
-        <p>A little about me, my favorite movies, epic anime, and pop music jams.</p>
+        <!-- This grabs the profile.jpg you uploaded to your repository -->
+        <img src="profile.jpg" alt="Jeron" class="profile-img">
+        <h1>JERONVERSE</h1>
+        <p>Welcome to my digital domain. Explore trending cinema & global beats.</p>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hey! I'm building this site to share the things I love. Welcome to my corner of the internet!</p>
-    </section>
+    <div class="container">
 
-    <section id="movies">
-        <h2>New Trending Movies</h2>
-        <ul>
-            <li>Movie Title 1 - A brief note on why it's trending.</li>
-            <li>Movie Title 2 - Quick review.</li>
-        </ul>
-    </section>
+        <!-- Movies Section -->
+        <h2 class="section-title">Trending Movies</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Gladiator II</h3>
+                <p>Epic historical action drama returning to the brutal arena atmosphere with spectacular visuals and intense battles.</p>
+                <span class="tag">Trending #1</span>
+            </div>
+            <div class="card">
+                <h3>Wicked</h3>
+                <p>A spectacular cinematic adaptation of the famous musical, bringing incredible vocals, magic, and vibrant fantasy design.</p>
+                <span class="tag">Highly Rated</span>
+            </div>
+            <div class="card">
+                <h3>Dune: Part Two</h3>
+                <p>An absolute masterpiece of modern sci-fi storytelling with unmatched sound design and breathtaking cinematography.</p>
+                <span class="tag">Sci-Fi Epic</span>
+            </div>
+        </div>
 
-    <section id="anime">
-        <h2>Cool New Anime</h2>
-        <ul>
-            <li>Anime Show 1 - Hype rating: 10/10.</li>
-            <li>Anime Show 2 - Check this out if you like action.</li>
-        </ul>
-    </section>
+        <!-- Pop Music Section -->
+        <h2 class="section-title">Pop Music Hits</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Die With A Smile</h3>
+                <p>Bruno Mars & Lady Gaga. A massive emotional powerhouse duet blending vintage soul textures with massive modern pop vocals.</p>
+                <span class="tag music-tag">Global Chart Topper</span>
+            </div>
+            <div class="card">
+                <h3>Birds of a Feather</h3>
+                <p>Billie Eilish. A beautifully melodic track featuring smooth indie-pop production and deeply captivating vocal layers.</p>
+                <span class="tag music-tag">Streaming Hit</span>
+            </div>
+            <div class="card">
+                <h3>Espresso</h3>
+                <p>Sabrina Carpenter. An incredibly catchy, upbeat disco-infused pop anthem dominant across world radio play.</p>
+                <span class="tag music-tag">Summer Anthem</span>
+            </div>
+        </div>
 
-    <section id="music">
-        <h2>Pop Music Hits</h2>
-        <ul>
-            <li>Song Name by Artist - Current favorite track.</li>
-        </ul>
-    </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jeronverse. Built completely from scratch via GitHub.</p>
+    </footer>
 
 </body>
 </html>
